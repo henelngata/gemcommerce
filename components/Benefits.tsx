@@ -2,6 +2,12 @@ import Image from "next/image";
 import React from "react";
 
 export default function Benefits() {
+  /**
+   * Benefits Data Array
+   * Each benefit contains an image, title, description, and image position
+   * to determine layout (image left or right).
+   * Helps keep the component DRY and scalable.
+   */
   const benefits = [
     {
       image: "/twin-dogs.svg",

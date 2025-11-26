@@ -10,6 +10,12 @@ const ShieldIcon = () => (
   />
 
 );
+/**
+ * Features Data Arrays
+ * Each feature contains an icon, title, and description.
+ * Used to render the left and right feature columns in the Hero component.
+ * Helps keep the component DRY and scalable.
+ */
 
 const features = [
   {

@@ -1,6 +1,12 @@
 import Image from "next/image"
 import React from "react"
 export default function Nutrition() {
+    /**
+     * Key Points Data Array
+     * Each key point contains a percentage and description.
+     * Used to render the list of key points in the Nutrition component.
+     * Helps keep the component DRY and scalable.
+     */
     const keyPoints = [
         {
             percentage: '97%',
