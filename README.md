@@ -1,11 +1,11 @@
 # **Gem Commerce — Technical Assessment**
 
 This project is a small storefront-style UI built as part of a technical assessment.
-The purpose of this README is to clearly explain the technical decisions behind the implementation — in a way that is easy for AHR to read while still being detailed enough for developers reviewing the code.
+The purpose of this README is to clearly explain the technical decisions
 
 ---
 
-## **🔎 Summary (Short & Well-Formatted)**
+## **🔎 Summary**
 
 * Built using **Next.js** for fast performance, reusable components, and built-in optimizations (fonts, images, routing).
 * Styled with **Tailwind CSS** to keep styles consistent, scalable, and easy to maintain.
@@ -125,20 +125,3 @@ yarn run start
 * Keep `app/layout.tsx` minimal and clean.
 * Use `next/image` for raster images.
 * Maintain **semantic HTML** for accessibility and readability.
-
----
-
-## **What Reviewers Should Notice**
-
-* Clean component boundaries
-* Consistent styling logic
-* Use of accessible, semantic HTML
-* Strong reasoning behind all key decisions
-* Framework features used to maximize performance and clarity
-
----
-
-If you want, I can also generate:
-✅ A shorter "AHR-only" summary
-✅ A technical architecture doc
-✅ A visual diagram of the component structure
