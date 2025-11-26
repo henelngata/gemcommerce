@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Inter_Tight, Geist_Mono } from "next/font/google";
+import {
+  Inter_Tight, } from "next/font/google";
 import "./globals.css";
 
 const interTight = Inter_Tight({
