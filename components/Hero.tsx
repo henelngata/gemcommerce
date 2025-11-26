@@ -47,7 +47,7 @@ const rightFeatures = [
 
 export default function Hero() {
   return (
-    <section className="w-full bg-white flex place-content-center py-20">
+    <section className="w-full bg-white flex place-content-center py-4">
       {/* Use <header> because this component represents the top/banner content of the page */}
       <header className="m-auto flex max-w-7xl flex-col items-center w-[80%] ">
         {/* Title */}
