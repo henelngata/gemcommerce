@@ -1,128 +1,144 @@
-# Gem Commerce — Technical Assessment
+# **Gem Commerce — Technical Assessment**
 
-This repository is a compact storefront UI implemented as part of a technical assessment. The goal of the project is to demonstrate clear technical decisions, good component structure, and accessibility-minded markup so reviewers (AHR / technical reviewers) can quickly evaluate design choices and trade-offs.
-
-**Primary goals:**
-
-- Show component-driven UI built with `Next.js`.
-- Use modern tooling for performance (font/image optimizations) and developer productivity (Tailwind CSS).
-- Prioritize semantic HTML and accessibility best practices.
-
-## Why these choices (technical rationale)
-
-- **Next.js (App Router)**: chosen for fast iteration and production-ready defaults.
-
-  - Built-in SSR/SSG/ISR options let you choose the right rendering strategy per page or component.
-  - `next/font` and `next/image` provide automatic optimizations (font subsetting, preloading, image sizing, and modern formats) with minimal configuration.
-  - Component-first architecture encourages small, reusable pieces which improves maintainability and reduces accidental duplication.
-
-- **Tailwind CSS**: utility-first styling reduces custom CSS surface area and makes it simple to express responsive layouts and small variations without creating new stylesheets. This speeds development and encourages consistent spacing and visual rhythm.
-
-- **SVGs for graphics**: vectors keep icons and illustrations sharp across devices and avoid maintaining multiple raster sizes for retina displays. Inline SVGs can also be made accessible via title/desc.
-
-- **Semantic HTML & accessibility**: using `header`, `main`, `section`, `nav`, and `footer` provides meaningful structure for assistive tech. This improves screen-reader navigation and reduces the need for ARIA overrides.
-
-## What to look for as a reviewer (AHR)
-
-- Component boundaries: components under `components/` are intentionally small and focused. This makes it easier to reason about props, isolation, and reusability.
-- Layout & global scope: `app/layout.tsx` is the global entry — it sets metadata and font loading. Avoid changing it unless you are intentionally changing global behavior (fonts, meta tags, or global styles).
-- Asset choices: SVGs were selected for clarity and size. Replace them only if a feature requires raster imagery.
-- Accessibility: confirm the use of semantic sections, proper heading order, and presence of `alt` text or accessible SVG titles.
-
-## Project layout (high-level)
-
-- `app/`
-  - `layout.tsx` — global layout, font optimization and metadata. Keep changes here minimal.
-  - `page.tsx` — primary route for the demo content.
-  - `globals.css` — Tailwind base and global utilities.
-- `components/` — presentational and small composition components: `Hero.tsx`, `Benefits.tsx`, `Nutrition.tsx`.
-- `public/` — static assets and SVGs.
-
-## Running and developing locally
-
-Install dependencies and start the dev server:
-
-```bash
-npm install
-npm run dev
-# open http://localhost:3000
-```
-
-Build for production:
-
-```bash
-npm run build
-npm run start
-```
-
-Notes: this project was created with the standard `create-next-app` layout and uses the `app/` router conventions.
-
-## Developer guidance / conventions
-
-- Prefer small components with explicit props — this encourages reuse and makes behavior easier to test.
-- Use Tailwind utilities for layout, spacing, and responsive rules. Avoid large amounts of custom CSS where utilities suffice.
-- For images that must be raster, use `next/image` to get built-in optimizations and explicit size handling.
-- Keep `app/layout.tsx` as the place for global font and top-level metadata — this file is intentionally minimal to avoid accidental global side effects.
-
-## Accessibility checklist
-
-- Use semantic elements (`header`, `main`, `section`, `nav`, `footer`) instead of plain `div`s where it improves meaning.
-- Maintain heading order and semantic grouping (`h1` → `h2` → `h3`).
-- Provide `alt` text for images. For inline SVGs, include an accessible `title` and `desc` when the graphic conveys meaning.
-- Ensure interactive controls are keyboard-accessible and have visible focus styles.
-
-## Do not overwrite (unless intentional)
-
-- Avoid changing `app/layout.tsx` font-loading and metadata unless you are intentionally altering the global typography or meta strategy.
-- Do not substitute SVGs for raster images without justification — the project relies on vector graphics for fidelity.
-
-## Suggested follow-ups (optional)
-
-- Add a short `CONTRIBUTING.md` with coding conventions and commit guidelines.
-- Add a small accessibility test script (axe or Playwright + axe) to perform automated checks on the main page.
-- Add unit tests for components (React Testing Library) to validate minimal behaviors and accessibility attributes.
+This project is a small storefront-style UI built as part of a technical assessment.
+The purpose of this README is to clearly explain the technical decisions behind the implementation — in a way that is easy for AHR to read while still being detailed enough for developers reviewing the code.
 
 ---
 
-For deeper developer notes and component mapping see `docs/PROJECT_DOCUMENTATION.md`.
+## **🔎 Summary (Short & Well-Formatted)**
 
-If you'd like the README formatted differently for non-technical stakeholders, I can generate a short executive summary in addition to this technical README.
+* Built using **Next.js** for fast performance, reusable components, and built-in optimizations (fonts, images, routing).
+* Styled with **Tailwind CSS** to keep styles consistent, scalable, and easy to maintain.
+* All images use **SVGs** to ensure crisp visuals on all screens without pixelation.
+* Accessibility improved through **semantic HTML**, proper heading structure, and meaningful `alt` text.
+* Codebase organized into small, reusable components to make reasoning and extension easier.
 
-# Gem Commerce — Technical Assessment
+---
 
-This repository is a small storefront-style UI built with `Next.js`. It was created as part of a technical assessment. See `docs/PROJECT_DOCUMENTATION.md` for detailed rationale and component mapping.
+## **Why I Chose This Stack**
 
-## Getting Started
+### **Next.js**
 
-First, run the development server:
+I selected **Next.js** because it provides strong defaults and lets me build fast, maintainable UIs with minimal configuration.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Key benefits:
+
+* **Reusable component architecture** for clean and scalable UI design.
+* **Built-in performance features** like `next/image` and `next/font`.
+* **App Router** simplifies layouts and routing logic.
+* **Automatic optimizations** reduce manual setup and ensure best-practice defaults.
+
+This lets me focus on building clear, well-structured components instead of handling low-level configuration.
+
+---
+
+## **Tailwind CSS**
+
+Tailwind CSS was used to write clean, consistent styles quickly.
+
+Reasons:
+
+* **Utility-first classes** speed up development and reduce custom CSS.
+* **Responsive utilities** simplify layout on all screen sizes.
+* **Design consistency** is maintained without manually repeating styles.
+* Encourages **reusable and scalable UI patterns**.
+
+---
+
+## **SVG Graphics**
+
+All icons and illustrations use **SVGs**.
+
+Why:
+
+* They stay **sharp at any resolution** — no pixelation.
+* They are **lighter** than PNG/JPG.
+* They support **accessible titles and descriptions** when used inline.
+
+---
+
+## **Accessibility & Semantic HTML**
+
+Accessibility was a priority. I used:
+
+* **Semantic elements** (`header`, `main`, `nav`, `section`, `footer`) instead of generic `<div>` wrappers.
+* **Proper heading hierarchy** (`h1 → h2 → h3`) for screen readers.
+* **Meaningful alt text** and accessible SVG metadata.
+* Keyboard accessibility with visible focus states.
+
+This creates a cleaner, more navigable document structure.
+
+---
+
+## **Project Structure**
+
+```
+app/
+  layout.tsx      → Global layout, metadata, fonts
+  page.tsx        → Main demo UI
+  globals.css     → Tailwind base styles
+components/
+  Hero.tsx
+  Benefits.tsx
+  Nutrition.tsx
+public/
+  (SVG assets)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Components are intentionally small and focused to show clear separation of concerns.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## **Running the Project**
 
-## Learn More
+Install dependencies:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+yarn install
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Start the development server:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+yarn  dev
+```
 
-## Deploy on Vercel
+Open:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+http://localhost:3000
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Build and run production:
+
+```bash
+yarn build
+yarn run start
+```
+
+---
+
+## **Development Conventions**
+
+* Prefer **small, reusable components**.
+* Use **Tailwind utilities** before writing custom CSS.
+* Keep `app/layout.tsx` minimal and clean.
+* Use `next/image` for raster images.
+* Maintain **semantic HTML** for accessibility and readability.
+
+---
+
+## **What Reviewers Should Notice**
+
+* Clean component boundaries
+* Consistent styling logic
+* Use of accessible, semantic HTML
+* Strong reasoning behind all key decisions
+* Framework features used to maximize performance and clarity
+
+---
+
+If you want, I can also generate:
+✅ A shorter "AHR-only" summary
+✅ A technical architecture doc
+✅ A visual diagram of the component structure
